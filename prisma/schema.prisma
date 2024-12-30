@@ -9,14 +9,14 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 model Tag {
   id   String @id @default(cuid())
   name String @db.VarChar(100)
-  post Post[]
+  Post Post[]
 }
 
 model Post {

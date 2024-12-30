@@ -9,10 +9,13 @@ import { SubmitHandler, useForm } from "react-hook-form";
 interface FormPostProps {
   submit: SubmitHandler<FormInputPost>;
   isEditing: boolean;
+  initialValue?: FormInputPost;
 }
 
-const FormPost: FC<FormPostProps> = ({ submit, isEditing }) => {
-  const { register, handleSubmit } = useForm<FormInputPost>();
+const FormPost: FC<FormPostProps> = ({ submit, isEditing, initialValue }) => {
+  const { register, handleSubmit } = useForm<FormInputPost>({
+    defaultValues: initialValue,
+  });
   
 const { data: dataTags, isLoading: isLoadingTags} = useQuery<Tag[]>({
   queryKey: ['tags'],
@@ -41,7 +44,7 @@ const { data: dataTags, isLoading: isLoadingTags} = useQuery<Tag[]>({
       ></textarea>
 
       {isLoadingTags? <span className="loading loading-dots loading-md"></span>: <select
-        {...register("tag" , { required: true})}
+        {...register("tagId" , { required: true})}
         className="select select-bordered w-full max-w-lg"
         defaultValue= ''
       >
