@@ -56,6 +56,6 @@ export async function GET(req : Request, context: contextProps) {
         });
         return NextResponse.json(post , { status: 200 })
     } catch (error) {
-        return NextResponse.json({ message : 'could not gfetch tags'} , { status: 500 })
+        return NextResponse.json({ message : error} , { status: 500 })
     }
 }
