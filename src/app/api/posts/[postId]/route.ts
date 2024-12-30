@@ -6,7 +6,7 @@ interface contextProps {
         postId: string,
     }
 }
-export async function DELETE(req : Request, context: contextProps) {
+export async function DELETE( context: contextProps) {
     try {
         const { params } = context;
         await db.post.delete({
@@ -43,7 +43,7 @@ export async function PATCH(req : Request, context: contextProps) {
 
 
 
-export async function GET(req : Request, context: contextProps) {
+export async function GET( context: contextProps) {
     try {
         const { params } = context;
         const post = await db.post.findFirst({
