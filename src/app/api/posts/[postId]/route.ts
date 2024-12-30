@@ -21,7 +21,7 @@ export async function DELETE( context: contextProps) {
 }
 
 
-export async function PATCH(req : Request, context: contextProps) {
+export async function PATCH( context: contextProps, req : Request) {    
     try {
         const { params } = context;
         const body = await req.json();
